@@ -17,7 +17,8 @@ function getImageUrls(data) {
   let html = data.split('<section')[1];
   for (let i = 0; i < 10; i++) {
     const startIndex = html.indexOf('src=') + 5;
-    const imageUrl = html.substring(startIndex).split('.jpg')[0] + '.jpg';
+    const imageUrl =
+      html.slice(Math.max(0, startIndex)).split('.jpg')[0] + '.jpg';
     html = html.slice(Math.max(0, startIndex + imageUrl.length));
     imageSrcs.push(imageUrl);
   }
